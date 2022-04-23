@@ -1,5 +1,5 @@
-def imageTag = '1.1.' + env.BUILD_NUMBER
-def registry = 'sohel07/dynamic_collections'
+def imageTag = '1.0.' + env.BUILD_NUMBER
+def registry = 'arshad789/dynamic_collection'
 def dockerImage = ''
 
 pipeline {
@@ -25,7 +25,7 @@ pipeline {
 		stage ('Build, push and then remove Docker image') {
 		    when {
                 expression {
-                    return env.BRANCH_NAME.equals("feature/v2") || env.BRANCH_NAME.equals("development")
+                    return env.BRANCH_NAME.equals("master") || env.BRANCH_NAME.equals("development")
 
                 }
             }
@@ -33,7 +33,7 @@ pipeline {
 				 script {
                     dockerImage = docker.build registry + ":$imageTag"
                     dockerImage.push()
-                    sh "docker rmi ${registry}:${imageTag}"
+                    // sh "docker rmi ${registry}:${imageTag}"
 
                 }
 			}
