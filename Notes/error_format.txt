@@ -1,0 +1,220 @@
+1. EIMS0500: Internal Server Error (Let the user retry again using exponential backoff strategy)
+https://cloud.google.com/storage/docs/exponential-backoff
+
+
+2. Define the error structure as below
+401 Unauthorized
+
+{
+"error": {
+ "errors": [
+  {
+   "domain": "global",
+   "reason": "required",
+   "message": "Login Required",
+   "locationType": "header",
+   "location": "Authorization"
+  }
+ ],
+ "code": 401,
+ "message": "Login Required"
+ }
+}
+see https://cloud.google.com/storage/docs/json_api/v1/status-codes for more details
+
+{
+            error: {
+                name: "ValidationError",
+                message: `Invalid isType value: ${fieldObject.isType}`,
+                details: 
+                {
+                    "message": "Invalid \"isType\" value",
+                    "path": "isType"
+                    "type": "any.required",
+                    "context": {
+                        "key": "isType",
+                    "label": "isType"
+                    }
+                },
+                _object: {
+                    fieldObject
+                }
+            }
+        } 
+
+
+
+
+
+
+    // //Build error object and return it
+    
+    // error = {
+    //     "code": "EIMS0000",
+    //     "details": [
+    //         {
+    //             "message": "\"label\" length must be at least 2 characters long",
+    //             "path": [
+    //                 "label"
+    //             ],
+                
+    //         }
+    //     ]
+    // }
+    
+    
+    
+    
+    
+    
+    // error: {
+    //     name: "ValidationError",
+    //     message: `Invalid isType value: ${fieldObject.isType}`,
+    //     code: 'Custom Error Code' prefix with EIMS0001
+    //     details: 
+    //     {
+    //         "path": [
+    //             "isType"
+    //         ],
+    //     },
+    //     _object: {
+    //         fieldObject
+    //     }
+    // }
+    
+    
+    
+    
+    // {
+    // "error": {
+    //  "errors": [
+    //   {
+    //    "domain": "global",
+    //    "reason": "require
+    //    "message": "Login Required",
+    //    "locationType": "header",
+    //    "location": "Authorization"
+    //   }
+    //  ],
+    //  "code": 401,
+    //  "message": "Login Required"
+    //  }
+    // }
+    
+    
+    
+    
+    // error: {
+    //     name: "ValidationError",
+    //     message: `Invalid isType value: ${fieldObject.isType}`,
+    //     details: 
+    //     {
+    //         "message": "Invalid \"isType\" value",
+    //         "path": "isType"
+    //         "type": "any.required",
+    //         "context": {
+    //             "key": "isType",
+    //         "label": "isType"
+    //         }
+    //     },
+    //     _object: {
+    //         fieldObject
+    //     }
+
+
+
+
+
+    2018-12-08 19:50:40 debug: ['64e07830-fb09-11e8-b44e-877397155479']: [ 'error object is : ',
+  { MongoError: E11000 duplicate key error collection: EIMS.dynamic_collections index: name_1 dup key: { : "students1" }
+    at Function.create (/Users/sohel/NodeJS/EIMS/node_modules/mongodb-core/lib/error.js:43:12)
+    at toError (/Users/sohel/NodeJS/EIMS/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/Users/sohel/NodeJS/EIMS/node_modules/mongodb/lib/operations/collection_ops.js:827:39)
+    at /Users/sohel/NodeJS/EIMS/node_modules/mongodb-core/lib/connection/pool.js:532:18
+    at _combinedTickCallback (internal/process/next_tick.js:132:7)
+    at process._tickCallback (internal/process/next_tick.js:181:9)
+    [stack]: 'MongoError: E11000 duplicate key error collection: EIMS.dynamic_collections index: name_1 dup key: { : "students1" }\n    at Function.create (/Users/sohel/NodeJS/EIMS/node_modules/mongodb-core/lib/error.js:43:12)\n    at toError (/Users/sohel/NodeJS/EIMS/node_modules/mongodb/lib/utils.js:149:22)\n    at coll.s.topology.insert (/Users/sohel/NodeJS/EIMS/node_modules/mongodb/lib/operations/collection_ops.js:827:39)\n    at /Users/sohel/NodeJS/EIMS/node_modules/mongodb-core/lib/connection/pool.js:532:18\n    at _combinedTickCallback (internal/process/next_tick.js:132:7)\n    at process._tickCallback (internal/process/next_tick.js:181:9)',
+    [message]: 'E11000 duplicate key error collection: EIMS.dynamic_collections index: name_1 dup key: { : "students1" }',
+    driver: true,
+    name: 'MongoError',
+    index: 0,
+    code: 11000,
+    errmsg: 'E11000 duplicate key error collection: EIMS.dynamic_collections index: name_1 dup key: { : "students1" }',
+    [Symbol(mongoErrorContextSymbol)]: {} },
+  [length]: 2 ]
+2018-12-08 19:50:40 debug: ['64e07830-fb09-11e8-b44e-877397155479']: 'E11000 duplicate key error collection: EIMS.dynamic_collections index: name_1 dup key: { : "students1" }'
+2018-12-08 19:50:40 info: ['64e07830-fb09-11e8-b44e-877397155479']: [ 'Error stack trace:',
+  'MongoError: E11000 duplicate key error collection: EIMS.dynamic_collections index: name_1 dup key: { : "students1" }\n    at Function.create (/Users/sohel/NodeJS/EIMS/node_modules/mongodb-core/lib/error.js:43:12)\n    at toError (/Users/sohel/NodeJS/EIMS/node_modules/mongodb/lib/utils.js:149:22)\n    at coll.s.topology.insert (/Users/sohel/NodeJS/EIMS/node_modules/mongodb/lib/operations/collection_ops.js:827:39)\n    at /Users/sohel/NodeJS/EIMS/node_modules/mongodb-core/lib/connection/pool.js:532:18\n    at _combinedTickCallback (internal/process/next_tick.js:132:7)\n    at process._tickCallback (internal/process/next_tick.js:181:9)',
+  [length]: 2 ]
+2018-12-08 19:50:40 info: ['64e07830-fb09-11e8-b44e-877397155479']: [ 'Error object: ',
+  { statusCode: 500,
+    name: 'Internal Server Error',
+    code: 'EIMS1005',
+    message: 'E11000 duplicate key error collection: EIMS.dynamic_collections index: name_1 dup key: { : "students1" }',
+    locationType: null,
+    location: null },
+  [length]: 2 ]
+
+
+
+
+  2018-12-08 19:47:40 debug: ['f9e45100-fb08-11e8-a763-63b253089fb2']: [ 'error object is : ',
+  { ValidationError: dynamic_collections validation failed: name: Path `name` is required.
+    at ValidationError.inspect (/Users/sohel/NodeJS/EIMS/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:399:38)
+    at formatProperty (util.js:800:11)
+    at formatArray (util.js:698:17)
+    at formatValue (util.js:578:18)
+    at inspect (util.js:293:10)
+    at Object.format (util.js:187:23)
+    at Splatter._splat (/Users/sohel/NodeJS/EIMS/node_modules/logform/splat.js:68:25)
+    at Splatter.transform (/Users/sohel/NodeJS/EIMS/node_modules/logform/splat.js:112:19)
+    at Format.info [as transform] (/Users/sohel/NodeJS/EIMS/node_modules/logform/combine.js:20:24)
+    at DerivedLogger._transform (/Users/sohel/NodeJS/EIMS/node_modules/winston/lib/winston/logger.js:235:29)
+    at DerivedLogger.Transform._read (/Users/sohel/NodeJS/EIMS/node_modules/readable-stream/lib/_stream_transform.js:184:10)
+    at DerivedLogger.Transform._write (/Users/sohel/NodeJS/EIMS/node_modules/readable-stream/lib/_stream_transform.js:172:83)
+    at doWrite (/Users/sohel/NodeJS/EIMS/node_modules/readable-stream/lib/_stream_writable.js:428:64)
+    at writeOrBuffer (/Users/sohel/NodeJS/EIMS/node_modules/readable-stream/lib/_stream_writable.js:417:5)
+    at DerivedLogger.Writable.write (/Users/sohel/NodeJS/EIMS/node_modules/readable-stream/lib/_stream_writable.js:334:11)
+    [stack]: 'ValidationError: dynamic_collections validation failed: name: Path `name` is required.\n    at ValidationError.inspect (/Users/sohel/NodeJS/EIMS/node_modules/mongoose/lib/error/validation.js:59:24)\n    at formatValue (util.js:399:38)\n    at formatProperty (util.js:800:11)\n    at formatArray (util.js:698:17)\n    at formatValue (util.js:578:18)\n    at inspect (util.js:293:10)\n    at Object.format (util.js:187:23)\n    at Splatter._splat (/Users/sohel/NodeJS/EIMS/node_modules/logform/splat.js:68:25)\n    at Splatter.transform (/Users/sohel/NodeJS/EIMS/node_modules/logform/splat.js:112:19)\n    at Format.info [as transform] (/Users/sohel/NodeJS/EIMS/node_modules/logform/combine.js:20:24)\n    at DerivedLogger._transform (/Users/sohel/NodeJS/EIMS/node_modules/winston/lib/winston/logger.js:235:29)\n    at DerivedLogger.Transform._read (/Users/sohel/NodeJS/EIMS/node_modules/readable-stream/lib/_stream_transform.js:184:10)\n    at DerivedLogger.Transform._write (/Users/sohel/NodeJS/EIMS/node_modules/readable-stream/lib/_stream_transform.js:172:83)\n    at doWrite (/Users/sohel/NodeJS/EIMS/node_modules/readable-stream/lib/_stream_writable.js:428:64)\n    at writeOrBuffer (/Users/sohel/NodeJS/EIMS/node_modules/readable-stream/lib/_stream_writable.js:417:5)\n    at DerivedLogger.Writable.write (/Users/sohel/NodeJS/EIMS/node_modules/readable-stream/lib/_stream_writable.js:334:11)',
+    [message]: 'dynamic_collections validation failed: name: Path `name` is required.',
+    errors: 
+     { name: 
+        { ValidatorError: Path `name` is required.
+    at new ValidatorError (/Users/sohel/NodeJS/EIMS/node_modules/mongoose/lib/error/validator.js:29:11)
+    at validate (/Users/sohel/NodeJS/EIMS/node_modules/mongoose/lib/schematype.js:844:13)
+    at /Users/sohel/NodeJS/EIMS/node_modules/mongoose/lib/schematype.js:897:11
+    at Array.forEach (<anonymous>)
+    at SchemaString.SchemaType.doValidate (/Users/sohel/NodeJS/EIMS/node_modules/mongoose/lib/schematype.js:853:19)
+    at /Users/sohel/NodeJS/EIMS/node_modules/mongoose/lib/document.js:1904:9
+    at _combinedTickCallback (internal/process/next_tick.js:132:7)
+    at process._tickCallback (internal/process/next_tick.js:181:9)
+          [stack]: 'ValidatorError: Path `name` is required.\n    at new ValidatorError (/Users/sohel/NodeJS/EIMS/node_modules/mongoose/lib/error/validator.js:29:11)\n    at validate (/Users/sohel/NodeJS/EIMS/node_modules/mongoose/lib/schematype.js:844:13)\n    at /Users/sohel/NodeJS/EIMS/node_modules/mongoose/lib/schematype.js:897:11\n    at Array.forEach (<anonymous>)\n    at SchemaString.SchemaType.doValidate (/Users/sohel/NodeJS/EIMS/node_modules/mongoose/lib/schematype.js:853:19)\n    at /Users/sohel/NodeJS/EIMS/node_modules/mongoose/lib/document.js:1904:9\n    at _combinedTickCallback (internal/process/next_tick.js:132:7)\n    at process._tickCallback (internal/process/next_tick.js:181:9)',
+          message: 'Path `name` is required.',
+          name: 'ValidatorError',
+          properties: 
+           { validator: [Object],
+             message: 'Path `name` is required.',
+             type: 'required',
+             path: 'name',
+             value: undefined },
+          kind: 'required',
+          path: 'name',
+          value: undefined,
+          reason: undefined,
+          [Symbol(mongoose:validatorError)]: true } },
+    _message: 'dynamic_collections validation failed',
+    name: 'ValidationError' },
+  [length]: 2 ]
+2018-12-08 19:47:40 debug: ['f9e45100-fb08-11e8-a763-63b253089fb2']: 'dynamic_collections validation failed: name: Path `name` is required.'
+2018-12-08 19:47:40 info: ['f9e45100-fb08-11e8-a763-63b253089fb2']: [ 'Error stack trace:',
+  'ValidationError: dynamic_collections validation failed: name: Path `name` is required.\n    at new ValidationError (/Users/sohel/NodeJS/EIMS/node_modules/mongoose/lib/error/validation.js:30:11)\n    at model.Document.invalidate (/Users/sohel/NodeJS/EIMS/node_modules/mongoose/lib/document.js:2048:32)\n    at p.doValidate.skipSchemaValidators (/Users/sohel/NodeJS/EIMS/node_modules/mongoose/lib/document.js:1911:17)\n    at /Users/sohel/NodeJS/EIMS/node_modules/mongoose/lib/schematype.js:847:9\n    at _combinedTickCallback (internal/process/next_tick.js:132:7)\n    at process._tickCallback (internal/process/next_tick.js:181:9)',
+  [length]: 2 ]
+2018-12-08 19:47:40 info: ['f9e45100-fb08-11e8-a763-63b253089fb2']: [ 'Error object: ',
+  { statusCode: 500,
+    name: 'Internal Server Error',
+    code: 'EIMS1005',
+    message: 'dynamic_collections validation failed: name: Path `name` is required.',
+    locationType: null,
+    location: null },
+  [length]: 2 ]

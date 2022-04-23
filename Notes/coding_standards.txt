@@ -1,0 +1,11 @@
+=============================
+Mongoose Data Model/Schema
+=============================
+1. Make sure to add mongoose error middleware for every Model
+
+
+
+=============
+Logging
+=============
+1. Make sure to log the payload before sending successfull/error response in all routes

@@ -1,0 +1,119 @@
+=======================================
+Standard end user message error codes
+=======================================
+EIMSG0001: Invalid input format
+EIMSG0002: Invalid property value
+EIMSG0003: Collection does not exist
+
+
+----------------------------------------
+
+EIMS1001: Joi validation failed for dynamic_collections_model in add dynamic filed function
+EIMS1002: Collection already exist in dynamic_collections table
+EIMS1003: Field object failed the schema validation in add dynamic filed function
+EIMS1004: Duplicate label found in the same collection while adding a new collection validateFieldLabelUniqueness
+EIMS1005: Internal server error at add_dynamic_collection_route
+EIMS1006: No such collection or more than one collection exist while adding a filed in add dynamic field function
+EIMS1007: field object validation failed while adding/updating to an existing collection
+EIMS1008: Duplicate label found in the same collection while adding/updating a field in an existing collection
+EIMS1009: mongoose save error middleware in error handler - validation error
+EIMS1010: mongoose save error middleware in error handler - mongo error for duplicate key - Duplicate key error
+EIMS1011: mongoose save error middleware in error handler - mongo internal server error - DB save error
+EIMS1012: Joi validation failed for dynamic_collections_model in add dynamic filed
+EIMS1013: Internal server error at add_dynamic_collection_field_route
+EIMS1014: Joi validation failed for dynamic_collections_model in update dynamic filed
+EIMS1015: No such collection or more than one collection exist while updating a filed in an existing collection 
+EIMS1016: Invlid parameter 'type' in /add/dynamic route
+EIMS1017: child "documentFieldSchema" failed because it is not array in add dynamic field funcion
+EIMS1018: Internal server error in update_dynamic_collection route 
+EIMS1019: Joi validation failed for dynamic_collections_model in update dynamic filed function
+EIMS1020: child "documentFieldSchema" failed because it is not array in update dynamic field funcion
+EIMS1021: No such collection or more than one collection exist while updating a filed in update dynamic field function
+EIMS1022: Field object failed the schema validation in update dynamic filed function
+EIMS1023: Restricted field value modified in update dynamic field function
+EIMS1024: Duplicate label found in the same collection while adding a new collection validateFieldLabelUniqueness
+EIMS1025: child "documentFieldSchema" failed because it is empty in add dynamic field
+EIMS1026: child "documentFieldSchema" failed because it is empty or contain more than 1 value in array in update dynamic field
+EIMS1027: Error in express error middleware
+EIMS1028: Internal server error in express error middleware function
+EIMS1029: Cannot update 'inactive' OR 'not dynamic' field in update dynamic field function
+EIMS1030: Internal server error at add_dynamic_document_route
+EIMS1031: Field property dependency check failed in add_dynamic_field function
+EIMS1032: Internal server error at add_dynamic_document route 
+EIMS1033: Joi validation failed for dynamic field data in add dynamic document function
+EIMS1034: No such collection or more than one collection exist while adding a dynamic document in add or update dyanmic document fucntion
+EIMS1035: Joi validation failed for field data validation in add or update dynamic document function
+EIMS1036: field unique constraint violated in val field data uniqueness function
+EIMS1037: Field type didn't match any valid type in build joi schema function. Highly unlikely but happend
+EIMS1038: No such collection or document exist by id in add or update dynamic document function
+EIMS1039: Joi validation failed for dynamic field data in get dynamic document function
+EIMS1040: Internal server error at add student function
+EIMS1041: No collection for a given reference exist in dynamic_collections collection in add dynamic field func
+EIMS1042: Cannot link to parent reference in add dyanmic field func
+EIMS1043: No collection for a given reference exist in dynamic_collections collection in update dynamic field func
+EIMS1044: Cannot link to parent reference in update dyanmic field func
+EIMS1045: Internal server error at get_add_student_form_route
+EIMS1046: Joi validation failed for dynamic doc payload in add dynamic document iterator function
+EIMS1047: No such collection or more than one collection exist while adding a dynamic document in add or update dyanmic document iterator fucntion
+EIMS1048: embeded doc validation failed in add or update dyanmic document fucntion
+EIMS1049: Required embeded field is empty in add or update dyanmic document fucntion
+EIMS1050: Collection violdated the rule based on its type in validate collection type function
+EIMS1051: Field referring to an invalid collection reference
+EIMS1052: A collection has reference to another collection twice 
+EIMS1053: Updated field is invalid while updating in existing collection
+EIMS1054: Couldn't find collection for the given reference in dynamic collections 
+EIMS1055: Cannot directly add data to collection other than of type main
+EIMS1056: Joi validation failed for get next sequence payload
+EIMS1057: Internal server error at create sequence route 
+EIMS1058: Invalid sequence name while linking sequence
+EIMS1059: Sequence exist and already linked
+EIMS1060: Failed to link to sequence. Actually failed to update link from false to true in sequence collection
+EIMS1061: Invalid sequence name while getting next sequence. Highly unlikely, but did happned
+EIMS1062: Invalid phone number in val phone number function by awesome phone library
+EIMS1063: internal server error in outbound internal microservice request
+EIMS1064: error response in find document by id function for outbound call
+EIMS1065: document doesn't exist
+EIMS1066: unexpected error 
+EIMS1067: errored while generating next sequence
+EIMS1068: Invalid method in add/updated dynamic collection
+EIMS1069: Invalid method in validate dynamic document route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

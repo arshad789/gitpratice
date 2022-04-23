@@ -1,0 +1,8 @@
+==============================================
+This shold be done as part of init container
+==============================================
+
+--- Create a sequence with below value
+{"_id":{"$oid":"5e6e74c2fa60de7aa8a4fbdd"},"link":true,"linkedTo":"sif","seq":{"$numberInt":"10000"},"createdAt":{"$date":{"$numberLong":"1584290139144"}},"updatedAt":{"$date":{"$numberLong":"1584299835918"}},"__v":{"$numberInt":"0"}}
+
+---

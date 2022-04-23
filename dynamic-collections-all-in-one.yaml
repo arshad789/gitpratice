@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dynamic-collections-config
+data:
+  NODE_ENV: "production"
+  NODE_CONFIG_ENV: "production"
+  NODE_CONFIG_DIR: "./config"
+  EIMS_DEBUG: "true"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dynamic-collections
+  labels:
+    app: dynamic-collections
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dynamic-collections
+  template:
+    metadata:
+      labels:
+        app: dynamic-collections
+    spec:
+      containers:
+      - name: dynamic-collections
+        image: sohel07/dynamic_collections:VERSION
+        command: ["node", "startup/index.js"]
+        envFrom:
+        - configMapRef:
+            name: dynamic-collections-config   
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: dockerhub
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dynamic-collections-service
+spec:
+  selector:
+    app: dynamic-collections
+  type: NodePort
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080
+      nodePort: 30080

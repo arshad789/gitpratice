@@ -1,0 +1,81 @@
+{
+  "EIMS": {
+    "home": "/home/node/app",
+    "datasources": {
+      "ds1": {
+        "name": "EIMSDS",
+        "db_name": "EIMS",
+        "host": "10.0.2.2",
+        "port": 27015,
+        "options": {
+          "autoReconnect":true,
+          "poolSize": 20,
+          "connectTimeoutMS": 5000,
+          "socketTimeoutMS":30000,
+          "reconnectTries": "Number.MAX_VALUE",
+          "bufferMaxEntries": 0,
+          "reconnectInterval": 100,
+          "useNewUrlParser": true,
+          "validateOptions": true,
+          "useCreateIndex": true,
+          "useFindAndModify": false,
+          "useUnifiedTopology": true
+        }
+      }
+    },
+    "server": {
+      "host": "localhost",
+      "port": 8080,      
+      "log": {
+        "standard": {
+          "home": "/home/node/app/logs",
+          "filename": "server.log",
+          "rotation": {
+            "interval": "1d",
+            "size": "512B"
+          },
+          "level": "info"
+        },
+        "exception": {
+          "home": "/home/node/app/logs",
+          "filename": "exceptions.log",
+          "rotation": {
+            "interval": "1d",
+            "size": "100M"
+          },
+          "level": "error"
+        },
+        "debug": {
+          "home": "/home/node/app/logs",
+          "filename": "debug.log",
+          "rotation": {
+            "interval": "1d",
+            "size": "100M"
+          },
+          "level": "debug"
+        },
+        "access": {
+          "home": "/home/node/app/logs",
+          "filename": "access.log",
+          "format": ":remote-addr :date[clf] \":method :url HTTP/:http-version\" :status :res[content-length] \":referrer\" \":user-agent\" :response-time",
+          "rotation": {
+            "interval": "1d",
+            "size": "100M"
+          },
+          "level": "info"
+        }
+      },
+      "timeouts": {
+        "global":{
+          "request": 30000
+        },
+        "books_route": {
+          "request": 30000
+        }
+      }
+    },
+    "student": {
+      "baseurl": "http://student-service:8080/api/student"
+    }
+  }
+}

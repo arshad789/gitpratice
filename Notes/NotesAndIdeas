@@ -1,0 +1,142 @@
+
+  { min: 2020-02-27T21:00:00.000Z,
+
+1. Rotate server log
+2. morgan log client ip address ** very important to log the ip address **
+3. define standards for error message json structure - done
+4. implement authentication and authorization
+
+5. Design search based on phone number, admission number, class, batch and year
+6. Seperate collection for mobile number, address and parent/guardians. 
+
+7. Make mobile number primary key
+8. Capture mobile number of student and parent and guardian(if different from parent)
+
+
+=======================
+Things to take care
+========================
+*** parametarized the findbyid and findbyvalue operations in both studnetn and dynamic modules
+*** build an init container which will setup every thing for required module
+*** se what happens if any one of the value isn't available while deconstruction in find document by id function
+
+*** see if we can mount the production config as config map
+
+1. if dynamic is false, then allow a function to make it ture 
+
+2. Change the status code to 201 for new document created or on updates on document. Even for collection creation
+
+1. Add debug logging based on environment variable
+2. Exit nodejs process if it failed to connect to DB or any other major dependencies while startup
+3. *** Build an error handler to handle all errors and then return a proper format with status code to send back to the client -- DONE
+4. joi min value should not be more than max in number field. it's not been taken care -- DONE
+5. Define a new custom logger info fucntion which will print to log and console
+6. while updating a field we are not checking the dyanmic value wether it is true or flase. Need to check that
+7. See if we need to add await to joi validate function
+
+
+======================
+Testing
+=====================
+1. See what happens if documentFieldSchema is array but length is 0 in add dynamic field - Taken care
+2. If the 
+
+
+
+=============================
+Sequence field
+=============================
+1. Make sure seq name exist before linking
+2. Link one sequence to one field and only one collection. 
+3. Find a way to have sequence filed at field0
+4. Find a way to set the min value for sequence field without much over head of checking for sequence increment
+
+1. Create a sequence while adding the dynamic collection itself
+2. If due to some reason, sequence created and collection creation failed, then check for the sequence existence 
+before creating one again. If exist and not linked, then link or else create one
+3. see the max value can be assigned to sequence of type number
+
+
+
+
+
+
+
+
+================================
+Mongo DB
+====================
+1. Find about the save timeout value. read on write concern to know more about this timeout
+2. For mongoose error not all are internal server error, so figure out validation error and return proper status code
+3. const updatedCollection = await DynamicCollection.findByIdAndUpdate(collection[0]._id, { $set: collection[0].documentFieldSchema }, { new: true, runValidators: true, maxTimeMS: 20000 });
+
+
+
+==============================
+Dynamic Form dependencies
+==============================
+1. while building dynamic form make sure labels are unique with respect to dynamicSchemas
+2. while accepting default value make sure the value is not null. if not defining default value then don't include the tag in dynamic schema paylod
+3. Generate a valid iso date on web application and send it to the api server
+
+----------------
+add or updating existing field - precaustins
+-----------
+
+3. Auto generate key either based on label or decide on strategy. But generate on backend only --  Done
+4. Do not send key  for new collection and for adding a new filed. To update an existing filed, key property is mandatory.
+5. use findAndModify to add new filed. This will ensure nothing gets modified till find and modify completes. 
+6.add status property to each document object to know whether it is active or inactive. This will help when we delete a filed after it was active for some time. 
+
+
+==================
+Dynamic schema
+==================
+
+1. Make sure "collectionName" is unique accross documents in dynamic_schemas collection - Done
+2. Use code 2552 as key value for new field 
+3. Validate default value not to be null or empty string
+
+========================
+User Prefrences
+========================
+1. Let the user define the sequence of the fields and store the same in frontend/backend(need to be decided) database on each user profile
+2. 
+
+
+=========================
+Request & DB Timeouts
+=========================
+1. Global request timeout is set in config/default.json
+2. DB reconnect retries and interval is also set in config/default.json
+3. DB CRUD operations timeouts need to be set to 20 seconds. Always set less than request timeout value.
+4. Define a global setting for CRUD timeout instead of setting at each operation level
+
+
+
+===========================
+Debug log
+===========================
+1. Add uuid to each request and log the same in debug to track the each request
+2. Define a Request/Response logging format
+3. Log the full error just before sending the response. This will ensure the req id is captured and the error is logged because some times the error and stack trace is not being logged in buildErrorObject function
+
+
+
+===================
+Request Tracking ID
+===================
+1. From web application send header 'Request-Tracking-Id' to track the specific request
+
+
+========================
+Error Handling & Error Object
+========================
+1. design error object to hold two messages. one detailed for frontend developer and another for end user
+
+
+
+===================
+Angular
+============
+ </mat-form-field> nice field format to try with forms

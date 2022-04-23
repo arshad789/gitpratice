@@ -1,0 +1,81 @@
+{
+  "EIMS": {
+    "home": "/Users/sohel/NodeJS/EIMS-Microservices/dynamic_collections/v2",
+    "datasources": {
+      "ds1": {
+        "name": "dynamicDS",
+        "db_name": "dynamic",
+        "host": "localhost",
+        "port": 27015,
+        "options": {
+          "autoReconnect":true,
+          "poolSize": 20,
+          "connectTimeoutMS": 5000,
+          "socketTimeoutMS":30000,
+          "reconnectTries": "Number.MAX_VALUE",
+          "bufferMaxEntries": 0,
+          "reconnectInterval": 100,
+          "useNewUrlParser": true,
+          "validateOptions": true,
+          "useCreateIndex": true,
+          "useFindAndModify": false,
+          "useUnifiedTopology": true
+        }
+      }
+    },
+    "server": {
+      "host": "localhost",
+      "port": 9081,      
+      "log": {
+        "standard": {
+          "home": "/Users/sohel/NodeJS/EIMS-Microservices/dynamic_collections/v2/logs",
+          "filename": "server.log",
+          "rotation": {
+            "interval": "1d",
+            "size": "512B"
+          },
+          "level": "info"
+        },
+        "exception": {
+          "home": "/Users/sohel/NodeJS/EIMS-Microservices/dynamic_collections/v2/logs",
+          "filename": "error.log",
+          "rotation": {
+            "interval": "1d",
+            "size": "100M"
+          },
+          "level": "error"
+        },
+        "debug": {
+          "home": "/Users/sohel/NodeJS/EIMS-Microservices/dynamic_collections/v2/logs",
+          "filename": "debug.log",
+          "rotation": {
+            "interval": "1d",
+            "size": "100M"
+          },
+          "level": "debug"
+        },
+        "access": {
+          "home": "/Users/sohel/NodeJS/EIMS-Microservices/dynamic_collections/v2/logs",
+          "filename": "access.log",
+          "format": ":remote-addr :date[clf] \":method :url HTTP/:http-version\" :status :res[content-length] \":referrer\" \":user-agent\" :response-time",
+          "rotation": {
+            "interval": "1d",
+            "size": "100M"
+          },
+          "level": "info"
+        }
+      },
+      "timeouts": {
+        "global":{
+          "request": 30000
+        },
+        "books_route": {
+          "request": 30000
+        }
+      }
+    },
+    "student": {
+      "baseurl": "http://localhost:9080/api/student"
+    }
+  }
+}

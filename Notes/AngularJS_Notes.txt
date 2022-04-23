@@ -1,0 +1,5 @@
+===========================
+Session
+============
+1. httpOnly has to be set to prevent from CSS attack
+2. secure=true flag (to ensure cookies can only be set over an encrypted connection).

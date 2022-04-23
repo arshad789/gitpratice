@@ -1,0 +1,89 @@
+document_field_schema
+=====================
+1. base filed is the bare minimum requirement that every dynamic filed must adhere to
+
+Fields Explanation
+================
+
+====================
+Things to remember
+====================
+A collection cannot be linked unless it is exist. So add collection first then link it to the main collection
+
+
+
+====================================
+Populate values from another table
+====================================
+
+ **** Add new fiedl ref and generate its value dynamically and make it unique ***** -- done
+ *** Modify code to accept only required fields from frontend. If any extra or restricted fiedl comes in send 400 error -- done
+ 
+1. To populate another table, we have to first figure out the field is actually a reference to another collection. One way to know is if the value is an object id, then we know that it is referring to another collection. Now we have to get the collection name to query for the document. The collection name will be stored in the dynamic_collection table in respective document record in 'reference' property
+
+2. To get the labels we first need to query the dynamic_collection to get the labels and then get the data from the actual collection, then map it to the labels based on seq. 
+
+
+3. Create a add dynamic document module where a generic function should take collection name as input, initialize model which is of type mixed, and the do the below tasks
+
+i. Add document to collection ---  whose metadata is stored in dynamic_collection collection
+ii. Update document in a collection ---- whose metadata is stored in dynamic_collection collection
+
+iii. Retriving data will be done by using the object id stored in parent table and ref stored in dynamic_collection using populate operation of mongod/mongoose
+
+
+
+========================
+add dynamic document
+========================
+
+1. validate the payload format
+2. Grab the meta data from collection, then validate using validateDynamicPayload
+i. Number of fields 
+ii. Required fields has the value 
+iii. 
+
+
+
+=====================
+Things to take care
+=====================
+1. Provide a feature where one can freeze or unfreeze a fiedl using dynamic value. By default keeping all fields dynamic
+2. A field cannot have default value if any one required OR unique is TRUE - done
+3. If unique is true, then required cannot be false - done
+3. If dynamic value if false, then only let the label be changed thats it. 
+4. If unique is false, then don't send this label to the front end as its value cannot be changed to true. But if the field value is true and user wants to disable it, then it can be done. 
+
+5. Make sure the sequence and index of document is always in sync. Do not store field1 into array index 2 - NA anymore
+
+6. Add phone number field and use any one of library awesome phone number or google-libphonenumber to validate the same
+
+
+7. **** Sort the dynamic document fields in asending order before storing it in the collection ****
+8. Can embeded document has unique value. Think and update accordingly
+9. Make sure we cannot link to parent parent in dynamic collection or else it will be a loop
+
+===================
+Front end
+===================
+1. Make front end mark required(true) and hide default field if the field is marked unique(ture)
+2. Make the front end hide default value, if the field is required(true)
+
+
+====================================
+New Collection Strategy
+====================================
+
+1. A main collection is a collection of non-main type collection
+2. A collection which isn't a main collection, cannot have embeded fields
+3. A main collection cannot be linked
+4. In main collection each field is an embeded filed
+5. Once the collection is marked main, then it cannot be updated to non-main collection
+
+
+
+===================
+Testing
+===================
+1. Test update dynamic collection field. Need to clear about add and update filed happening properly
+

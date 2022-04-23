@@ -1,0 +1,80 @@
+{
+    "name": "students",
+    "documentFieldSchema": [
+        {
+            "label": "Name",
+            "isType": "String",
+            "min": 2,
+            "max": 15,
+            "isRequired": true
+        },
+        {
+            "label": "Date Of Birth",
+            "isType": "RawDate",
+            "isRequired": true
+        },
+        {
+            "label": "Address",
+            "isType": "ObjectId",
+            "isRequired": true
+        },
+        {
+            "label": "Mobile",
+            "isType": "ObjectId",
+            "isRequired": true
+        },
+        {
+            "label": "Email",
+            "isType": "ObjectId",
+            "isRequired": true
+        },
+        {
+            "label": "Blood Group",
+            "isType": "String",
+            "min": 0,
+            "max": 3,
+            "isRequired": false
+        },
+        {
+            "label": "Father",
+            "isType": "ObjectId",
+            "isRequired": true
+        },
+        {
+            "label": "Guardian",
+            "isType": "ObjectId",
+            "isRequired": true
+        },
+        {
+            "label": "Date Of Admission",
+            "isType": "Date",
+            "isRequired": true
+        }
+    ]
+}
+
+ // *** gp - group or plain field type
+ const promises = [];
+ _.mapKeys(seqFieldsCollec, async (gpFieldVal, gpFieldKey) => {
+     // Irrespective of group or plain field, the gpFieldVal is an object for sure
+     // *** pd - plain or data field
+     clogger.debug(reqTrackingID, ['Group/Plain Field key value in map keys is : ', gpFieldKey]);
+     _.mapKeys(gpFieldVal, (pdFieldVal, pdFieldKey) => {
+         // If true means its a plain field type
+         if (_.isPlainObject(pdFieldVal)) {
+             // This will return field seq and seq name in plain fields
+             _.mapValues(pdFieldVal, (dFieldId, dFieldSeq) => {
+                 clogger.debug(reqTrackingID, ['Getting seq for : ', dFieldId, 'of data field', dFieldSeq]);
+                 const nextSeq = getNextSequence(reqTrackingID, dFieldId);
+                 clogger.debug(reqTrackingID, ['Next seq for : ', dFieldId, 'is: ', nextSeq]);
+                 promises.push(nextSeq);
+             });
+         } else {
+             clogger.debug(reqTrackingID, ['Getting seq for : ', pdFieldVal, 'of data field', pdFieldKey]);
+             const nextSeq = getNextSequence(reqTrackingID, pdFieldVal);
+             clogger.debug(reqTrackingID, ['Next seq for : ', pdFieldVal, 'is: ', nextSeq]);
+             promises.push(nextSeq);
+         }
+     });
+ });
+ 

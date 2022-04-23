@@ -1,0 +1,12 @@
+Dynamic Fields
+===============
+
+
+Database
+=========
+--- Add below to all mongoose schema which will add createdAT and updatedAT
+{
+    timestamps: true,
+}
+
+--- 
