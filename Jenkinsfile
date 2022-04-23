@@ -12,7 +12,7 @@ pipeline {
         stage ('Build Nodejs microservice') {
 		    when {
                 expression {
-                    return env.BRANCH_NAME.equals("feature/v2") || env.BRANCH_NAME.equals("development")
+                    return env.BRANCH_NAME.equals("master") || env.BRANCH_NAME.equals("development")
                 }
             }
 			steps {
