@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: dynamic-collections
-        image: sohel07/dynamic_collections:VERSION
+        image: arshad789/dynamic_collection:VERSION
         command: ["node", "startup/index.js"]
         envFrom:
         - configMapRef:
@@ -34,7 +34,7 @@ spec:
         ports:
         - containerPort: 8080
       imagePullSecrets:
-      - name: dockerhub
+      - name: arshad789
 
 ---
 apiVersion: v1
